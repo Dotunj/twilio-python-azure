@@ -1,0 +1,2 @@
+azure-functions
+twilio==6.35.4
