@@ -6,15 +6,15 @@ from twilio.rest import Client
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-    account_sid = os.environ['ACCOUNT_SID']
-    auth_token = os.environ['AUTH_TOKEN']
-    client = Client(account_sid, auth_token)
+    accountSid = os.environ['ACCOUNT_SID']
+    authToken = os.environ['AUTH_TOKEN']
+    client = Client(accountSid, authToken)
 
-    phone_number = req.params.get('phone_number')
-    if phone_number:
+    phoneNumber = req.params.get('phone_number')
+    if phoneNumber:
         try:
             isValidPhoneNumber = client.lookups.phone_numbers(
-                phone_number).fetch(type=['carrier'])
+                phoneNumber).fetch(type=['carrier'])
             return func.HttpResponse(f"Phone Number is valid {isValidPhoneNumber.carrier}!")
         except:
             return func.HttpResponse("Invalid phone number",
