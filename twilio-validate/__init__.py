@@ -15,7 +15,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         try:
             isValidPhoneNumber = client.lookups.phone_numbers(
                 phoneNumber).fetch(type=['carrier'])
-            return func.HttpResponse(f"Phone Number is valid {isValidPhoneNumber.carrier}!")
+            return func.HttpResponse(f"Phone Number is valid: {isValidPhoneNumber.carrier}!")
         except:
             return func.HttpResponse("Invalid phone number",
                                      status_code=400)
